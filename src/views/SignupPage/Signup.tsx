@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import React, { useState } from "react"
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 import './SignupPage.css'
 
 const Signup: React.FC = () => {
@@ -10,11 +12,8 @@ const Signup: React.FC = () => {
     const [error, setError] = useState('');
 
     
-    const simulateSignupAPICall = async (email: string, password: string) => {
-        await new Promise(resolve => setTimeout(resolve, 100));
-
-        return {success: email.includes('@') && password.length >= 6};
-    }
+    const auth = getAuth();
+    const db = getFirestore();
 
     const handleSignup = async (e: React.FormEvent <HTMLFormElement>) => {
         e.preventDefault();
@@ -32,20 +31,22 @@ const Signup: React.FC = () => {
         }
 
         try{
-            const response = await simulateSignupAPICall(email, password);
+            const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredentials.user;
 
-            if (response.success){
-                console.log("Account created successfuly!");
-                navigate("/login");
-            }
-            else{
-                setError("Account creation was unsuccessful, please try again!");
-            }
+            await setDoc(doc(db, "users", user.uid), {
+                email: email,
+                createdAt: new Date(),
+            });
+
+            console.log("Account created successfully!");
+            navigate('/login');
         }
-        catch{
-            setError("API call was unsuccessful, please try again!");
+        catch (err: any){
+            console.error("Signup error: ", err);
+            setError(err.message || "Account creation did not work.  Please try again later!");
         }
-    }
+    };
 
     return (
         <div className = "login-container">
