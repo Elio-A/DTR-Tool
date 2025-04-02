@@ -8,7 +8,7 @@ body{
     width: 400px;
     margin: 100px auto;
     padding: 30px;
-    background-color: #857ba1;
+    background-color: #FF5F1F !important;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -20,6 +20,7 @@ body{
     color: #fffbfb;
     margin-bottom: 20px;
 }
+  
 
 /* Styling the form: */
 .login-form{
@@ -51,7 +52,7 @@ body{
     width: 50%;
     display: block;
     margin: 0 auto;
-    background-color: #7f5cb8;
+    background-color: #D4AF37 !important;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -62,6 +63,6 @@ body{
 }
 
 .btn-primary:hover{
-    background-color: #44759d;
+    background-color: #f3c52f !important;
     transform: scale(1.1, 1.1);
 }

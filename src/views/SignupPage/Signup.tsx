@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom"
 import React, { useState } from "react"
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import './SignupPage.css'
 
@@ -12,7 +11,6 @@ const Signup: React.FC = () => {
     const [error, setError] = useState('');
 
     
-    const auth = getAuth();
     const db = getFirestore();
 
     const handleSignup = async (e: React.FormEvent <HTMLFormElement>) => {
