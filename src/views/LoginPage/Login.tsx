@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
-//import { db } from "../../../firebase"
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react"
+import { db } from "../../../firebase"
 import './LoginPage.css'
 
 const Login: React.FC<{onLogin: () => void}> = ({onLogin}) => {
@@ -12,32 +13,30 @@ const Login: React.FC<{onLogin: () => void}> = ({onLogin}) => {
     const handleLogin = async (e: React.FormEvent <HTMLFormElement>) => {
         e.preventDefault();
         try {
-            const response = await simulateApiCall(email, password)
-    
-            if (response.success){
-                onLogin()
-                console.log("Login Successful!")
-                navigate("/home")
-            }
-            else{
-                setError('Invalid credentials.  Please try again!')
-            }
+            const auth = getAuth();
+            await signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+                //Signed in:
+                const user = userCredential.user;
+                onLogin();
+                console.log("Logged in successfully!");
+                navigate("/home");
+                console.log("Navigating to hom now");
+            })
+            .catch((error) => {
+                setError("Invalid Credentials.  Please try again!");
+                console.error("Login error: ", error);
+            });
         }
-        catch{
-            setError('An error occured when connecting with the API.  Please try again!')
+        catch(err){
+            setError('An error occured during login.  Please try again later!');
+            console.error("Login error: ", err);
         }
-    }
+    };
 
     const handleSignup = async (e: React.MouseEvent <HTMLButtonElement>) => {
         e.preventDefault();
         console.log("Signup button clicked");
         navigate("/signup")
-    }
-
-    const simulateApiCall = async (email: string, password: string) => {
-        await new Promise(resolve => setTimeout(resolve, 100))
-        
-        return {success: email.includes('@') && password.length > 0}
     }
 
     return(
