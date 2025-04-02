@@ -1,0 +1,73 @@
+/* Body CSS: */
+body{
+    background-color: #555;
+}
+
+/* Login Container Styling: */
+.login-container{
+    width: 400px;
+    margin: 100px auto;
+    padding: 30px;
+    background-color: #857ba1;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-container h2{
+    font-family: "Boldonse", system-ui;
+    font-weight: bold;
+    color: #fffbfb;
+    margin-bottom: 20px;
+}
+  
+
+/* Styling the form: */
+.login-form{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.form-group{
+    font-family: "Boldonse", system-ui;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group label{
+    display: block;
+    margin-bottom: 5px;
+    color: #e7dddd;
+}
+
+.form_group input:focus {
+    border-color: #5cb85c;
+    outline: none;
+    box-shadow: 0 0 5px rgba(92, 184, 92, 0.5);
+}
+
+/* Button styling: */
+.btn-primary{
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    background-color: #7f5cb8;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover{
+    background-color: #44759d;
+    transform: scale(1.1, 1.1);
+}
+
+/* Will need:
+ - Signup link styling
+ - Fix button hover
+*/
