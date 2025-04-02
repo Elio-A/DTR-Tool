@@ -1,9 +1,9 @@
 import './App.css';
 import Login from "./views/LoginPage/Login"
 import HomePage from "./views/HomePage/Home"
-// import MapView from "./views/MapPage/MapView"
-// import NbPower from './views/OutsideLinks/NbPower';
-// import Signup from "./views/SignupPage/Signup"
+import MapView from "./views/MapPage/MapView"
+import NbPower from './views/OutsideLinks/NbPower';
+import Signup from "./views/SignupPage/Signup"
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Box } from '@mui/material';
 import Sidebar from './global/AppSidebar';
@@ -41,14 +41,14 @@ function App() {
           <Routes>
             <Route path="/login" element={<Login onLogin={() => setIsAuthenticated(true)}/>}/>
             <Route path="*" element={<Navigate to="/login"/>}/>
-            {/* <Route path="/Signup" element={<Signup/>}/> */}
+            <Route path="/Signup" element={<Signup/>}/>
 
           {isAuthenticated && (
             <>
             {/* <Route element={<ProtectedRoutes/>}> */}
               <Route path="/home" element={<HomePage/>}/>
-              {/* <Route path="/map" element={<MapView/>}/>
-              <Route path="/NBPower" element={<NbPower/>}/> */}
+              <Route path="/map" element={<MapView/>}/>
+              <Route path="/NBPower" element={<NbPower/>}/>
             {/* </Route> */}
             </>
           )}
