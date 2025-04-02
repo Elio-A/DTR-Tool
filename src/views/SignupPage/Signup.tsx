@@ -31,20 +31,19 @@ const Signup: React.FC = () => {
         }
 
         try{
-            const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
-            const user = userCredentials.user;
-
-            await setDoc(doc(db, "users", user.uid), {
-                email: email,
+            const userID = Date.now().toString();
+            await setDoc(doc(db, "users", userID), {
+                email,
+                password,
                 createdAt: new Date(),
             });
 
-            console.log("Account created successfully!");
-            navigate('/login');
+            console.log("User successfully registered!");
+            navigate("/login");
         }
-        catch (err: any){
-            console.error("Signup error: ", err);
-            setError(err.message || "Account creation did not work.  Please try again later!");
+        catch(err){
+            console.log("Error saving user data: ", err);
+            setError("Failed to create account.  Please try again.");
         }
     };
 

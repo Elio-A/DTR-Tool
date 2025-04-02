@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom"
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, collection, query, where, getDocs } from "firebase/firestore";
 import React, { useState } from "react"
-import { db } from "../../../firebase"
 import './LoginPage.css'
 
 const Login: React.FC<{onLogin: () => void}> = ({onLogin}) => {
@@ -9,23 +8,23 @@ const Login: React.FC<{onLogin: () => void}> = ({onLogin}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const db = getFirestore();
 
     const handleLogin = async (e: React.FormEvent <HTMLFormElement>) => {
         e.preventDefault();
         try {
-            const auth = getAuth();
-            await signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-                //Signed in:
-                const user = userCredential.user;
+            const usersRef = collection(db, "users");
+            const qry = query(usersRef, where("email", "==", email), where("password", "==", password))
+            const querySnapshot = await getDocs(qry);
+
+            if(!querySnapshot.empty){
+                console.log("User logged in successfully!");
                 onLogin();
-                console.log("Logged in successfully!");
                 navigate("/home");
-                console.log("Navigating to hom now");
-            })
-            .catch((error) => {
-                setError("Invalid Credentials.  Please try again!");
-                console.error("Login error: ", error);
-            });
+            }
+            else{
+                setError("Invalid email or password.  Please try again!");
+            }
         }
         catch(err){
             setError('An error occured during login.  Please try again later!');
