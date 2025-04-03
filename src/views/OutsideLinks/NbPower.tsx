@@ -1,8 +1,8 @@
 import { useEffect } from "react"
 
 const NbPower: React.FC = () => {
-    const handleHomePage = async () => {
-    }
+    // const handleHomePage = async () => {
+    // }
     
     useEffect(() => {
         console.log("In Home Screen")
