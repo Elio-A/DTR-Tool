@@ -9,16 +9,22 @@ import Signup from "./views/SignupPage/Signup"
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Box } from '@mui/material';
 import Sidebar from './global/AppSidebar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // import ProtectedRoutes from './components/ProtectedRoutes/ProtectedRoutes';
 
 function App() {
 
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return localStorage.getItem("isAuthenticated") === "true"; 
+  });
 
   const location = useLocation()
   const showSidebar = location.pathname !== "/login";
+
+  useEffect(() => {
+    localStorage.setItem("isAuthenticated", isAuthenticated.toString());
+  }, [isAuthenticated]);
 
   return (
     <Box display={'flex'} flexDirection={"row"} height={"100vh"}>
@@ -27,6 +33,7 @@ function App() {
         initialSelected='Home'
         isCollapsed={isSidebarCollapsed}
         setIsCollapsed={setIsSidebarCollapsed}
+        setIsAuthenticated={setIsAuthenticated}
       />
       )}
       <Box

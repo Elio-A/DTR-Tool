@@ -17,11 +17,10 @@ const Home: React.FC = () => {
         console.log("In Home Screen")
     }, []);
 
-
+    
 
     return(
         <div>
-            
             <h2>
                 Hello. You are in the Home page
             </h2>
