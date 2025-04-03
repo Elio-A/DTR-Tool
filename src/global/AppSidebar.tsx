@@ -9,9 +9,10 @@ interface SideBarProps {
     initialSelected?: string;
     isCollapsed: boolean;
     setIsCollapsed: (collapsed: boolean) => void;
+    setIsAuthenticated: (authState: boolean) => void;
 }
 
-function AppSidebar({ initialSelected = "Home", isCollapsed, setIsCollapsed }: SideBarProps){
+function AppSidebar({ initialSelected = "Home", isCollapsed, setIsCollapsed, setIsAuthenticated }: SideBarProps){
     const theme = useTheme();
     const navigate = useNavigate();
     const [selected, setSelected] = useState(initialSelected);
@@ -19,6 +20,15 @@ function AppSidebar({ initialSelected = "Home", isCollapsed, setIsCollapsed }: S
     const handleNavigation = (route: string) => {
         setSelected(route)
         navigate(route)
+    }
+
+    const handleSignout = () =>{
+        if (window.confirm("Are you sure you want to sign out?")){
+            setIsAuthenticated(false);
+            localStorage.removeItem("isAuthenticated");
+            navigate("/login")
+        }
+        
     }
 
     return (
@@ -62,7 +72,7 @@ function AppSidebar({ initialSelected = "Home", isCollapsed, setIsCollapsed }: S
                     {/* Logout Route */}
                     <MenuItem
                         icon={<LogOutIcon />}
-                        onClick={() => handleNavigation("/login")}
+                        onClick={handleSignout}
                         active={selected === "Logout"}
                     >
                         <Typography>Sign Out</Typography>
