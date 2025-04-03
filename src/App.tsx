@@ -27,8 +27,8 @@ function App() {
   }, [isAuthenticated]);
 
   return (
-    <Box display={'flex'} flexDirection={"column"} height={"100vh"}>
-      {isAuthenticated && (
+    <Box display={'flex'} flexDirection={"row"} height={"100vh"}>
+      {showSidebar && (
       <Sidebar
         initialSelected='Home'
         isCollapsed={isSidebarCollapsed}
@@ -39,9 +39,11 @@ function App() {
       <Box
         sx={{
           flexGrow: 1,
-          paddingLeft: showSidebar ? isSidebarCollapsed
-            ? "80px" : "270px"
-          : "0px",
+          paddingLeft: showSidebar 
+            ? isSidebarCollapsed
+              ? "80px" 
+              : "270px"
+            : "0px",
           transition: "padding-left 0.3s",
           overflow: "auto"
         }}
@@ -50,7 +52,6 @@ function App() {
           <Routes>
             <Route path="/login" element={<Login onLogin={() => setIsAuthenticated(true)}/>}/>
             <Route path="*" element={<Navigate to="/login"/>}/>
-
             <Route path="/signup" element={<Signup/>}/>
 
 
