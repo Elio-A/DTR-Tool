@@ -1,4 +1,4 @@
-import { GoogleMap, KmlLayer, LoadScript } from "@react-google-maps/api";
+import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import { useEffect } from "react"
 
 const mapContainerStyle = {
@@ -8,7 +8,7 @@ const mapContainerStyle = {
 
 const center = { lat: 45.9636, lng: -66.6431 };
 
-const kmlURL = "http://localhost:5000/maps/NewBrunswick.kmz"
+//const kmlURL = "http://localhost:5000/maps/NewBrunswick.kmz"
 
 const MapView: React.FC = () => {
     useEffect(() => {

@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
@@ -13,7 +13,7 @@ interface SideBarProps {
 }
 
 function AppSidebar({ initialSelected = "Home", isCollapsed, setIsCollapsed, setIsAuthenticated }: SideBarProps){
-    const theme = useTheme();
+    // const theme = useTheme();
     const navigate = useNavigate();
     const [selected, setSelected] = useState(initialSelected);
     

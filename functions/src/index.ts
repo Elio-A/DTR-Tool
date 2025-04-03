@@ -1,19 +1,13 @@
-/**
- * Import function triggers from their respective submodules:
- *
- * import {onCall} from "firebase-functions/v2/https";
- * import {onDocumentWritten} from "firebase-functions/v2/firestore";
- *
- * See a full list of supported triggers at https://firebase.google.com/docs/functions
- */
-
 import {onRequest} from "firebase-functions/v2/https";
-import * as logger from "firebase-functions/logger";
+// import * as logger from "firebase-functions/logger";
+import axios from "axios";
 
-// Start writing functions
-// https://firebase.google.com/docs/functions/typescript
-
-// export const helloWorld = onRequest((request, response) => {
-//   logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+export const requestMapInformation = onRequest(async (request, response) => {
+    try{
+        const resp = await axios.get("http://localhost:4200/getMapData");
+        console.log(resp.data)
+        response.json(resp.data)
+    } catch (error) {
+        response.status(500).send("Error calling Backend")
+    }
+})
