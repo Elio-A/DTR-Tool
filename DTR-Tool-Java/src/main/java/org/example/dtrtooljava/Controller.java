@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Controller {
-    APISender sender = new APISender();
+    APICaller sender = new APICaller();
 
     @GetMapping("/getMapData")
     public ResponseEntity<String> getMapData() {

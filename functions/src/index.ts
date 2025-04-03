@@ -10,4 +10,4 @@ export const requestMapInformation = onRequest(async (request, response) => {
     } catch (error) {
         response.status(500).send("Error calling Backend")
     }
-})
+});
