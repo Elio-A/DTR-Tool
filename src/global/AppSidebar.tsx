@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Activity, HomeIcon, LogOutIcon, MapIcon, MenuIcon } from "lucide-react"
+import "./Sidebar.css"
+
 interface SideBarProps {
     initialSelected?: string;
     isCollapsed: boolean;
@@ -19,41 +21,20 @@ function AppSidebar({ initialSelected = "Home", isCollapsed, setIsCollapsed }: S
         navigate(route)
     }
 
-    return(
-        <Box
-            sx={{
-                position: "fixed",
-                height: "100vh",
-                zIndex: 100,
-                "& .pro-sidebar-inner": {
-                    background: theme.palette.primary.main,
-                    height: "100vh",
-                },
-                "& .pro-icon-wrapper": {
-                    background: "transparent !important",
-                },
-                "& .pro-inner-item": {
-                    padding: "5px 35px 5px 20px !important",
-                },
-                "& .pro-inner-item:hover": {
-                    color: theme.palette.secondary.main,
-                },
-                "& .pro-menu-item.active": {
-                    color: theme.palette.secondary.light,
-                },
-            }}
-        >
+    return (
+        <Box className="sidebar-container">
             <Sidebar collapsed={isCollapsed}>
                 <Menu>
-                    <MenuItem 
-                        icon={<MenuIcon size={24}/>} 
-                        onClick={() => setIsCollapsed(!isCollapsed)}>
-                    </MenuItem>
+                    {/* Collapse/Expand Button */}
+                    <MenuItem
+                        icon={<MenuIcon size={24} />}
+                        onClick={() => setIsCollapsed(!isCollapsed)}
+                    ></MenuItem>
                 </Menu>
                 <Menu>
                     {/* Home Route */}
                     <MenuItem
-                        icon={<HomeIcon/>}
+                        icon={<HomeIcon />}
                         onClick={() => handleNavigation("/home")}
                         active={selected === "Home"}
                     >
@@ -62,31 +43,31 @@ function AppSidebar({ initialSelected = "Home", isCollapsed, setIsCollapsed }: S
 
                     {/* Map Route */}
                     <MenuItem
-                        icon={<MapIcon/>}
+                        icon={<MapIcon />}
                         onClick={() => handleNavigation("/map")}
                         active={selected === "Map"}
-                        >
+                    >
                         <Typography>Map View</Typography>
                     </MenuItem>
 
                     {/* Status Route */}
                     <MenuItem
-                        icon={<Activity/>}
+                        icon={<Activity />}
                         onClick={() => handleNavigation("/status")}
                         active={selected === "Status"}
-                        >
+                    >
                         <Typography>Status</Typography>
                     </MenuItem>
 
                     {/* Logout Route */}
                     <MenuItem
-                        icon={<LogOutIcon/>}
+                        icon={<LogOutIcon />}
                         onClick={() => handleNavigation("/login")}
                         active={selected === "Logout"}
-                        >
+                    >
                         <Typography>Sign Out</Typography>
                     </MenuItem>
-                </Menu> 
+                </Menu>
             </Sidebar>
         </Box>
     )
