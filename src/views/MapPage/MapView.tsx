@@ -8,7 +8,7 @@ const mapContainerStyle = {
 
 const center = { lat: 45.9636, lng: -66.6431 };
 
-const kmlURL = "https://www.google.com/maps/d/embed?mid=1wyr97M0-FDH4euQlNhMsuFh-OAeG62U&ehbc=2E312F"
+const kmlURL = "http://localhost:5000/maps/NewBrunswick.kmz"
 
 const MapView: React.FC = () => {
     useEffect(() => {

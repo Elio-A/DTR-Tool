@@ -1,13 +1,13 @@
-import { Box, Button, Input, TextField } from "@mui/material"
-import { useEffect, useState } from "react"
+// import { Box, Button, Input, TextField } from "@mui/material"
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { addDoc, collection } from "firebase/firestore"
-import { db } from "../../../firebase"
+// import { addDoc, collection } from "firebase/firestore"
+// import { db } from "../../../firebase"
 
 const Home: React.FC = () => {
     const navigate = useNavigate()
-    const handleHomePage = async () => {
-    }
+    // const handleHomePage = async () => {
+    // }
     
     const handleNBPowerSite = async () => {
         navigate("/NBPower")
