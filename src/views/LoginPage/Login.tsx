@@ -2,13 +2,13 @@ import { useNavigate } from "react-router-dom"
 import { getFirestore, collection, query, where, getDocs } from "firebase/firestore";
 import React, { useState } from "react"
 import './LoginPage.css'
+import { db } from "../../../firebase"
 
 const Login: React.FC<{onLogin: () => void}> = ({onLogin}) => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const db = getFirestore();
 
     const handleLogin = async (e: React.FormEvent <HTMLFormElement>) => {
         e.preventDefault();
