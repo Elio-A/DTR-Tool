@@ -10,5 +10,4 @@ public class DtrToolJavaApplication {
         SpringApplication.run(DtrToolJavaApplication.class, args);
         System.out.println("DtrToolJavaApplication started");
     }
-
 }

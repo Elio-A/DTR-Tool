@@ -17,7 +17,7 @@ const MapView: React.FC = () => {
     return(
         <LoadScript googleMapsApiKey="AIzaSyBqH9Y7RtNS5onyMudk5dRB3R0g76NH-kA">
             <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={12}>
-                <KmlLayer url={kmlURL}/>
+                {/* <KmlLayer url={kmlURL}/> */}
             </GoogleMap>
         </LoadScript>
     )
