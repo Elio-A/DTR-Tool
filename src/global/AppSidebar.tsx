@@ -47,7 +47,11 @@ function AppSidebar({ initialSelected = "Home", isCollapsed, setIsCollapsed }: S
                 <Menu>
                     <MenuItem 
                         icon={<MenuIcon size={24}/>} 
-                        onClick={() => setIsCollapsed(!isCollapsed)}>
+                        onClick={() => setIsCollapsed(!isCollapsed)}
+                        style={{
+                            margin: "10px 0 20px 0",
+                            color: theme.palette.common.white,
+                        }}>
                     </MenuItem>
                 </Menu>
                 <Menu>
