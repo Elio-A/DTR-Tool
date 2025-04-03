@@ -68,6 +68,7 @@ const Login: React.FC<{onLogin: () => void}> = ({onLogin}) => {
                     <button className = "btn-primary" onClick = {handleSignup}>Signup</button>
                 </div>
             </form>
+            {error && <p className = "error-message">{error}</p>}
         </div>   
     )
 }
