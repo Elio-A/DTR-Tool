@@ -20,7 +20,7 @@ function App() {
   });
 
   const location = useLocation()
-  const showSidebar = location.pathname !== "/login";
+  const showSidebar = (location.pathname !== "/login") && (location.pathname !== "/signup");
 
   useEffect(() => {
     localStorage.setItem("isAuthenticated", isAuthenticated.toString());
