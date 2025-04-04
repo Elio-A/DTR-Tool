@@ -1,7 +1,7 @@
 import './App.css';
 import Login from "./views/LoginPage/Login"
 import HomePage from "./views/HomePage/Home"
-
+import Status from "./views/StatusPage/Status"
 import MapView from "./views/MapPage/MapView"
 import NbPower from './views/OutsideLinks/NbPower';
 
@@ -61,6 +61,7 @@ function App() {
               <Route path="/home" element={<HomePage/>}/>
               <Route path="/map" element={<MapView/>}/>
               <Route path="/NBPower" element={<NbPower/>}/>
+              <Route path="/status" element={<Status/>}/>
             {/* </Route> */}
             </>
           )}

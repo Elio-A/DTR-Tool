@@ -4,7 +4,7 @@ public class AmpacityCalculator {
     //Formula from standard 738
     //I_ampacity^2 R(T)=hA(T−T_amb)+σϵA[T^4−T_amb^4
 
-    final double STEFAN_BOLTZMANN_CONSTANT = 5.76e-8
+    final double STEFAN_BOLTZMANN_CONSTANT = 5.76e-8;
     public double calculator(double ambientTemperature, double conductorTemperature,
                              double resistanceAtTemperature, double convectiveHeatTransferCoefficient,
                              double surfaceArea, double emissivity){
