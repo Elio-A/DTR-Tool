@@ -1,0 +1,17 @@
+html,
+body,
+#root {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent scrollbars */
+}
+
+body {
+  display: flex; /* Use flexbox to manage layout */
+}
+
+#root {
+  flex: 1; /* Allow #root to grow and take remaining space */
+  display: flex; /* Enable flexbox inside #root */
+}
